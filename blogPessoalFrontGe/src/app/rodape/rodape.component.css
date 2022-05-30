@@ -17,11 +17,21 @@ ul.social-network li{
     padding: 10px;
 }
 
-.fa-instagram-square:houver{
+.fa-instagram:hover{
     color: palevioletred
 
 }
 
-.fa-linkedin-square:houver{
+.fa-linkedin-square:hover{
     color: blue;
+}
+
+.fa-github:hover{
+    color: gray;
+}
+
+.corRodape {
+    background: #f7f6f5 !important;
+    background: -webkit-linear-gradient(to right, #ffffff, #f78eee, #9125e9) !important;
+    background: linear-gradient(to right, #ffffff, #f78eee, #8758d3) !important; 
 }

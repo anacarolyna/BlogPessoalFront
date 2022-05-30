@@ -6,3 +6,9 @@
 a{
 cursor: pointer;
 }
+
+.corMenu {
+    background: #f7f6f5 !important;
+    background: -webkit-linear-gradient(to right, #ffffff, #f78eee, #9125e9) !important;
+    background: linear-gradient(to right, #ffffff, #f78eee, #8758d3) !important; 
+}
