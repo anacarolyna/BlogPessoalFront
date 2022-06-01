@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { User } from '../model/User';
 import { AuthService } from '../service/auth.service';
 
@@ -13,9 +14,10 @@ export class CadastrarComponent implements OnInit {
  confirmarSenha: string
  tipoUsuario: string
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService, private router: Router) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
+    window.scroll(0,0)
   }
 
 
@@ -31,12 +33,14 @@ export class CadastrarComponent implements OnInit {
 
   cadastrar() {
     this.user.tipo = this.tipoUsuario
+
     if(this.user.senha != this.confirmarSenha) {
       alert('A senha não coincide! Confirme sua senha novamente.')
     }
     else {
       this.authService.cadastrar(this.user).subscribe((resp:User) => {
         this.user = resp
+        this.router.navigate(['/entrar'])
         alert('Usuário cadastrado com sucesso!')
       })
     }
