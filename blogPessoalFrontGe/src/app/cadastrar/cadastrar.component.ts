@@ -13,6 +13,7 @@ export class CadastrarComponent implements OnInit {
  user: User = new User
  confirmarSenha: string
  tipoUsuario: string
+ 
 
   constructor(private authService: AuthService, private router: Router) { }
 
@@ -35,7 +36,7 @@ export class CadastrarComponent implements OnInit {
     this.user.tipo = this.tipoUsuario
 
     if(this.user.senha != this.confirmarSenha) {
-      alert('A senha não coincide! Confirme sua senha novamente.')
+      ('A senha não coincide! Confirme sua senha novamente.')
     }
     else {
       this.authService.cadastrar(this.user).subscribe((resp:User) => {

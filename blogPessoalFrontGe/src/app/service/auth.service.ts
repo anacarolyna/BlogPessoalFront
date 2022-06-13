@@ -14,6 +14,11 @@ export class AuthService {
     private http: HttpClient) 
   { }
 
+  token = { 
+    headers: new HttpHeaders().set('Authorization', environment.token)
+  }
+
+
    entrar (userLogin: UserLogin): Observable <UserLogin> {
      return this.http.post <UserLogin> ('https://anablogpessoal.herokuapp.com/usuarios/logar', userLogin)
 
@@ -24,6 +29,11 @@ export class AuthService {
     return this.http.post <User> ('https://anablogpessoal.herokuapp.com/usuarios/cadastrar', user)
 
   }
+
+   editar(user: User): Observable<User>{
+    return this.http.put<User>('https://anablogpessoal.herokuapp.com/usuarios',user, this.token)
+  }
+
   getByIdUser(id: number): Observable<User> {
     return this.http.get<User>(`https://anablogpessoal.herokuapp.com/usuarios/${id}`, {headers: new HttpHeaders().set('Authorization', environment.token)})
   }
