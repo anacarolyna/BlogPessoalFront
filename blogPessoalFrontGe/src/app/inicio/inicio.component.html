@@ -46,6 +46,7 @@
 
   <div class="tab-content" id="nav-tabContent">
 
+    <!-- Todas as postagens -->
     <div class="tab-pane fade show active" id="todasPostagens" role="tabpanel" aria-labelledby="nav-todasPostagens-tab">
 
       <div class="row d-flex justify-content-center mt-5 mb-5">
@@ -56,6 +57,7 @@
         </div>
       </div>
 
+      <!-- Lista de postagens -->
       <div class="card-columns">
         <div class="card text-center" *ngFor='let item of listaPostagens '>
           <div class="card-body">
@@ -72,9 +74,12 @@
           </div>
         </div>
       </div>
+      <!-- Lista de postagens -->
 
     </div> 
+    <!-- Todas as postagens -->
 
+    <!-- Minhas Postagens -->
     <div class="tab-pane fade" id="minhasPostagens" role="tabpanel" aria-labelledby="nav-minhasPostagens">
       
       <div class="card-columns">
@@ -94,9 +99,11 @@
           </div>
         </div>
       </div>
-
     </div>
+      <!-- Minhas Postagens -->
 
+
+      <!-- Postagem por Tema -->
     <div class="tab-pane fade" id="postagemTema" role="tabpanel" aria-labelledby="nav-postagemTema-tab">
 
       <div class="card-columns" *ngFor="let tema of listaTemas">
@@ -116,9 +123,9 @@
           </div>
         </div>
       </div>
-      
-      
     </div>
+    <!-- Postagem por Tema -->
+
   </div>
 </div>
 
@@ -160,6 +167,7 @@
       <div class="modal-footer">
         <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
         <button type="button" class="btn btn-success" data-dismiss="modal"  (click)="publicar()" data-dismiss="modal">Publicar</button>
+        <!-- Modal -->
       </div>
     </div>
   </div>
