@@ -18,6 +18,7 @@ export class MenuComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+
   }
 
   sair() {
@@ -29,3 +30,5 @@ export class MenuComponent implements OnInit {
   }
 
 }
+
+
