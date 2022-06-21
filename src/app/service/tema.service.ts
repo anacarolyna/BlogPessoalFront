@@ -15,6 +15,12 @@ export class TemaService {
     headers: new HttpHeaders().set('Authorization', environment.token)
   }
 
+  // refreshToken(){
+  //   this.token = {
+  //     headers: new HttpHeaders().set('Authorization', environment.token)
+  //   }
+  // }
+
   getAllTema(): Observable<Tema[]>{
     return this.http.get<Tema[]>('https://anablogpessoal.herokuapp.com/tema', this.token)
   }
@@ -24,7 +30,7 @@ export class TemaService {
   }
 
   getByNomeTema(nome: string): Observable<Tema[]>{
-    return this.http.get<Tema[]>(`https://anablogpessoal.herokuapp.com/tema`, this.token)
+    return this.http.get<Tema[]>('https://anablogpessoal.herokuapp.com/tema', this.token)
   }
 
   postTema(tema: Tema): Observable<Tema>{
@@ -39,5 +45,7 @@ export class TemaService {
   deleteTema(id: number) {
     return this.http.delete(`https://anablogpessoal.herokuapp.com/tema/${id}`, this.token)
   }
+
+  
 
 }

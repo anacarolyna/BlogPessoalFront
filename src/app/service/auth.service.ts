@@ -18,6 +18,11 @@ export class AuthService {
     headers: new HttpHeaders().set('Authorization', environment.token)
   }
 
+  // refreshToken(){
+  //   this.token = {
+  //     headers: new HttpHeaders().set('Authorization', environment.token)
+  //   }
+  // }
 
    entrar (userLogin: UserLogin): Observable <UserLogin> {
      return this.http.post <UserLogin> ('https://anablogpessoal.herokuapp.com/usuarios/logar', userLogin)
@@ -25,7 +30,6 @@ export class AuthService {
    }
 
   cadastrar (user: User): Observable <User>{
-
     return this.http.post <User> ('https://anablogpessoal.herokuapp.com/usuarios/cadastrar', user)
 
   }
@@ -37,7 +41,7 @@ export class AuthService {
   getByIdUser(id: number): Observable<User> {
     return this.http.get<User>(`https://anablogpessoal.herokuapp.com/usuarios/${id}`, {headers: new HttpHeaders().set('Authorization', environment.token)})
   }
-
+  
 
   logado(){
     let ok: boolean = false
@@ -48,5 +52,7 @@ export class AuthService {
 
     return ok
   }
+
+  
 
 }
