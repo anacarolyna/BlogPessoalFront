@@ -15,6 +15,13 @@ export class PostagemService {
     headers: new HttpHeaders().set('Authorization', environment.token)
   }
 
+  refreshToken(){
+    this.token = {
+      headers: new HttpHeaders().set('Authorization', environment.token)
+    }
+  }
+
+
   
   getAllPostagens(): Observable<Postagem[]>{
     return this.http.get<Postagem[]>('https://anablogpessoal.herokuapp.com/postagens', this.token)

@@ -15,11 +15,11 @@ export class TemaService {
     headers: new HttpHeaders().set('Authorization', environment.token)
   }
 
-  // refreshToken(){
-  //   this.token = {
-  //     headers: new HttpHeaders().set('Authorization', environment.token)
-  //   }
-  // }
+  refreshToken(){
+    this.token = {
+      headers: new HttpHeaders().set('Authorization', environment.token)
+    }
+  }
 
   getAllTema(): Observable<Tema[]>{
     return this.http.get<Tema[]>('https://anablogpessoal.herokuapp.com/tema', this.token)

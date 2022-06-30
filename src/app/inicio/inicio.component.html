@@ -72,7 +72,7 @@
               </small></p>
 
             <p class="card-text"><small class="text-muted">
-                by: {{item.usuario.nome}}
+                Por: {{item.usuario.nome}}
               </small></p>
           </div>
         </div>
@@ -113,7 +113,15 @@
         <div class="col-md-4">
 
           <div class="form-group mb-5">
-            <input type="text" class="form-control" id="tituloPesquisa" placeholder="Digite um tema para pesquisar" [(ngModel)]='nomeTema' (keyup)='findByNomeTema()'>
+            <select class="form-control" [(ngModel)]="idTema" (change)="findByIdTema()" name="tema" id="tema">
+              <option *ngFor="let item of listaTemas" value="{{item.id}}">
+                {{ item.descricao }}
+              </option>
+            </select>
+            <!-- <input type="text" class="form-control" id="tituloPesquisa"  [(ngModel)]='idTema' (change)="findByIdTema()" name="tema" id="tema">
+            <option *ngFor='let item of listaTemas' value="{{item.id}}">
+              {{ item.descricao }}
+            </option> (para o usuario inserir)-->
           </div>
 
         </div>
@@ -121,8 +129,9 @@
 
 
       <div class="card-columns" 
-      *ngFor="let tema of listaTemas | orderBy : key : reverse">
-        <div class="card text-center" *ngFor='let item of tema.postagem'>
+      *ngFor="let item of tema.postagem | orderBy : key : reverse">
+      
+        <div class="card text-center">
           <div class="card-body">
             <h5 class="card-title m-0">{{item.titulo}}</h5>
             <p class="card-text mt-3">{{item.texto}}</p>
@@ -131,7 +140,7 @@
               </small></p>
 
               <p class="card-text"><small class="text-muted">
-                by: {{item.usuario.nome}}
+                Por: {{item.usuario.nome}}
               </small></p>
 
            

@@ -19,11 +19,11 @@ export class InicioComponent implements OnInit {
   postagem: Postagem = new Postagem()
   listaPostagens: Postagem[]
   tituloPost: string
-   
+
   tema: Tema = new Tema()
   listaTemas: Tema[]
   idTema: number
-  nomeTema: string
+  // nomeTema: string
 
   user: User = new User()
   idUser = environment.id
@@ -41,42 +41,44 @@ export class InicioComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    window.scroll(0,0)
+    window.scroll(0, 0)
 
     if (environment.token == '') {
+      this.alertas.showAlertInfo('Sua sessão expirou, faça o login novamente')
       this.router.navigate(['/entrar'])
     }
 
-       this.getAllTemas()
-       this.getAllPostagens()   
+    this.authService.refreshToken()
+    this.getAllTemas()
+    this.getAllPostagens()
 
   }
 
-  getAllTemas(){
+  getAllTemas() {
     this.temaService.getAllTema().subscribe((resp: Tema[]) => {
       this.listaTemas = resp
     })
   }
 
-  findByIdTema(){
-    this.temaService.getByIdTema(this.idTema).subscribe((resp: Tema) =>{
+  findByIdTema() {
+    this.temaService.getByIdTema(this.idTema).subscribe((resp: Tema) => {
       this.tema = resp
     })
   }
 
-  getAllPostagens(){
+  getAllPostagens() {
     this.postagemService.getAllPostagens().subscribe((resp: Postagem[]) => {
       this.listaPostagens = resp
     })
   }
 
-  findByIdUser(){
+  findByIdUser() {
     this.authService.getByIdUser(this.idUser).subscribe((resp: User) => {
       this.user = resp
     })
   }
 
-  publicar(){
+  publicar() {
     this.tema.id = this.idTema
     this.postagem.tema = this.tema
 
@@ -88,12 +90,12 @@ export class InicioComponent implements OnInit {
       this.alertas.showAlertSuccess('Postagem realizada com sucesso!')
       this.postagem = new Postagem()
       this.getAllPostagens()
-      
+
     })
   }
 
-  findByTituloPostagem(){
-    if(this.tituloPost == ''){
+  findByTituloPostagem() {
+    if (this.tituloPost == '') {
       this.getAllPostagens()
     } else {
       this.postagemService.getByTituloPostagem(this.tituloPost).subscribe((resp: Postagem[]) => {
@@ -102,17 +104,15 @@ export class InicioComponent implements OnInit {
     }
   }
 
-  findByNomeTema(){
-    if(this.nomeTema == ''){
-      this.getAllTemas()
-    } else {
-      this.temaService.getByNomeTema(this.nomeTema).subscribe((resp: Tema[]) => {
-        this.listaTemas = resp
-      })
-    }
-  }
-  }
-
- 
+  // findByNomeTema() {
+  //   if (this.nomeTema == '') {
+  //     this.getAllTemas()
+  //   } else {
+  //     this.temaService.getByNomeTema(this.nomeTema).subscribe((resp: Tema[]) => {
+  //       this.listaTemas = resp
+  //     })
+  //   }
+  // }
+}
 
 
