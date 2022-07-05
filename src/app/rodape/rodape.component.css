@@ -18,16 +18,16 @@ ul.social-network li{
 }
 
 .fa-instagram:hover{
-    color: palevioletred
+    color: #cf0073
 
 }
 
 .fa-linkedin-square:hover{
-    color: blue;
+    color: #047cbc
 }
 
 .fa-github:hover{
-    color: gray;
+    color: #555353
 }
 
 .corRodape {
